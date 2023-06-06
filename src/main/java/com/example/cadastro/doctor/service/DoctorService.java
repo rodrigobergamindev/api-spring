@@ -26,8 +26,8 @@ public class DoctorService {
 	
 	
 	public DoctorResponseDTO findById(Long id) {
-		DoctorResponseDTO doctorResponseById = new DoctorResponseDTO(repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No records found for this id")));
-		return doctorResponseById;	
+		return new DoctorResponseDTO(repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No records found for this id")));
+	
 	}
 
 }
