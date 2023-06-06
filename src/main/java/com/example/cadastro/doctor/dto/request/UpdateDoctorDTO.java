@@ -1,4 +1,4 @@
-package com.example.cadastro.doctor.dto;
+package com.example.cadastro.doctor.dto.request;
 
 import java.util.List;
 

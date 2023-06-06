@@ -1,17 +1,21 @@
 package com.example.cadastro.doctor.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.example.cadastro.doctor.dto.CreateDoctorDTO;
-import com.example.cadastro.doctor.dto.UpdateDoctorDTO;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.example.cadastro.doctor.dto.request.CreateDoctorDTO;
+import com.example.cadastro.doctor.dto.request.UpdateDoctorDTO;
 import com.example.cadastro.doctor.enums.Especialidade;
 import com.example.cadastro.endereco.Address;
 import com.example.cadastro.endereco.CreateAddressDTO;
 
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -19,7 +23,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Table(name = "DOCTORS")
+@Table(name = "doctor")
 @Entity(name = "Doctor")
 @Getter
 @Data
@@ -27,11 +31,15 @@ import lombok.Setter;
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 
-public class Doctor {
+public class Doctor implements Serializable {
 	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private static final long serialVersionUID = 1L;
+	
+	@Id 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(name="doctor_name", nullable = false, length = 120)
 	private String name;
 	
 	private String email;
@@ -41,6 +49,7 @@ public class Doctor {
 	
 	@Enumerated(EnumType.STRING)
 	private Especialidade especialidade;
+	
 	
 	//@OneToMany(cascade = CascadeType.ALL)
 	//@JoinColumn(name = "address_id", referencedColumnName = "id")
