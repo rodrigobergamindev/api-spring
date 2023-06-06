@@ -1,0 +1,14 @@
+spring:
+  datasource:
+      driver-class-name: oracle.jdbc.OracleDriver
+      url: jdbc:oracle:thin:@localhost:1521/XEPDB1
+      username: system
+      password: 0909
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+     hibernate:
+     dialect: org.hibernate.dialect.Oracle10gDialect
+     show-sql: false
+     

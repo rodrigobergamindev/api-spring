@@ -31,7 +31,7 @@ public record CreateDoctorDTO (
 		
 		//@NotNull
 		//@Valid
-		//List<CreateAddressDTO> address
+		//List<CreateAddressDTO> address 
 		) {
 
 

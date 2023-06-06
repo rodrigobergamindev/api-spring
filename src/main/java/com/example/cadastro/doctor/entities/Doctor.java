@@ -45,7 +45,7 @@ public class Doctor {
 	//@OneToMany(cascade = CascadeType.ALL)
 	//@JoinColumn(name = "address_id", referencedColumnName = "id")
 	//private List<Address> address;
-	
+
 	
 	public Doctor(@Valid CreateDoctorDTO data) {
 		this.name = data.name();
