@@ -9,7 +9,7 @@ import com.example.cadastro.MainApplication;
 import com.example.cadastro.doctor.dto.request.CreateDoctorDTO;
 import com.example.cadastro.doctor.dto.request.UpdateDoctorDTO;
 import com.example.cadastro.doctor.dto.response.DoctorResponseDTO;
-import com.example.cadastro.doctor.dto.response.GetAllDoctorsDTO;
+
 import com.example.cadastro.doctor.entities.Doctor;
 import com.example.cadastro.doctor.repository.DoctorRepository;
 import com.example.cadastro.exceptions.NoDataFoundException;
@@ -28,11 +28,11 @@ public class DoctorService {
 	private DoctorRepository repository;
 	
 	
-	public Page<GetAllDoctorsDTO> findAll(Pageable pagination){
+	public Page<DoctorResponseDTO> findAll(Pageable pagination){
 			
 		log.info("Getting all doctors");
      
-    	   Page<GetAllDoctorsDTO> doctorList = repository.findAll(pagination).map(GetAllDoctorsDTO::new);
+    	   Page<DoctorResponseDTO> doctorList = repository.findAll(pagination).map(DoctorResponseDTO::new);
     	   
     	   if(doctorList.isEmpty()) {
     		   throw new NoDataFoundException("No data found!");

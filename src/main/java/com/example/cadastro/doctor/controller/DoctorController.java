@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.cadastro.doctor.dto.request.CreateDoctorDTO;
 import com.example.cadastro.doctor.dto.request.UpdateDoctorDTO;
 import com.example.cadastro.doctor.dto.response.DoctorResponseDTO;
-import com.example.cadastro.doctor.dto.response.GetAllDoctorsDTO;
 import com.example.cadastro.doctor.entities.Doctor;
 import com.example.cadastro.doctor.repository.DoctorRepository;
 import com.example.cadastro.doctor.service.DoctorService;
@@ -62,7 +61,7 @@ public class DoctorController {
 	@GetMapping
 	@Transactional(readOnly = true)
 	@ResponseBody
-    public Page<GetAllDoctorsDTO> findAll(Pageable pagination){
+    public Page<DoctorResponseDTO> findAll(Pageable pagination){
 
         return service.findAll(pagination);
     }
