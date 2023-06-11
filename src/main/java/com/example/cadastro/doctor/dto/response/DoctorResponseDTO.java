@@ -17,6 +17,7 @@ public record DoctorResponseDTO(
         Especialidade especialidade
 		) {
 	
+	/*
 	 public DoctorResponseDTO(Doctor doctor){
 	        this(
 	                doctor.getId(),
@@ -28,6 +29,7 @@ public record DoctorResponseDTO(
 	                );
 	    }
 
+*/
 	public Long getId() {
 		// TODO Auto-generated method stub
 		return this.id;

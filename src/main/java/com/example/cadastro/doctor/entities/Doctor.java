@@ -26,6 +26,7 @@ import lombok.Setter;
 @Table(name = "doctor")
 @Entity(name = "Doctor")
 @Getter
+@Setter
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -45,6 +46,8 @@ public class Doctor implements Serializable {
 	private String email;
 	
 	private String phone;
+	
+	@Column(nullable = false, length = 120)
 	private String crm;
 	
 	@Enumerated(EnumType.STRING)
@@ -55,16 +58,7 @@ public class Doctor implements Serializable {
 	//@JoinColumn(name = "address_id", referencedColumnName = "id")
 	//private List<Address> address;
 
-	
-	public Doctor(@Valid CreateDoctorDTO data) {
-		this.name = data.name();
-		this.email = data.email();
-		this.phone = data.phone();
-		this.crm = data.crm();
-		this.especialidade = data.especialidade();
-		//this.address = data.address().stream().map(address ->  new Address(address)).collect(Collectors.toList());
-		
-	}
+
 	
 	public void update(UpdateDoctorDTO data) {
 

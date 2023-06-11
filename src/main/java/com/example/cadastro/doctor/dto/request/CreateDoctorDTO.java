@@ -27,7 +27,7 @@ public record CreateDoctorDTO (
 		@NotBlank
 		String phone,
 		
-		@NotBlank
+		@NotBlank(message = "{crm.notempty}")
 		@Pattern(regexp = "\\d{4,6}")
 		String crm,
 		

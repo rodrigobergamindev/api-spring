@@ -44,11 +44,9 @@ public class MapperConverterTest {
     @Test
     public void parseEntityListToDTOListTest() {
     	
-    	List<DoctorResponseDTO> outputList = new ArrayList<DoctorResponseDTO>();
+    	List<DoctorResponseDTO> outputList = mapper.doctorsToAllDoctorsDTO(inputObject.mockEntityList());
     	
-    	for(Doctor doctor: inputObject.mockEntityList()) {
-			outputList.add(mapper.doctorToDoctorDTO(doctor));
-		}
+    	
     	
         DoctorResponseDTO outputZero = outputList.get(0);
         
