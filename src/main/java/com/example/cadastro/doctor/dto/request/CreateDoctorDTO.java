@@ -1,11 +1,12 @@
 package com.example.cadastro.doctor.dto.request;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.example.cadastro.address.dto.request.CreateAddressDTO;
 import com.example.cadastro.doctor.entities.Doctor;
 import com.example.cadastro.doctor.enums.Especialidade;
-import com.example.cadastro.endereco.CreateAddressDTO;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
@@ -17,14 +18,14 @@ import jakarta.validation.constraints.Pattern;
 
 
 public record CreateDoctorDTO (
-		@NotBlank
+		@NotBlank(message = "{name.notempty}")
 		String name,
 		
 		@NotEmpty(message = "{email.notempty}")
 		@Email
 		String email,
 		
-		@NotBlank
+		@NotBlank(message = "{phone.notempty}")
 		String phone,
 		
 		@NotBlank(message = "{crm.notempty}")
@@ -32,11 +33,11 @@ public record CreateDoctorDTO (
 		String crm,
 		
 		@NotNull
-		Especialidade especialidade
+		Especialidade especialidade,
 		
-		//@NotNull
-		//@Valid
-		//List<CreateAddressDTO> address 
+		@NotNull(message = "{address.notempty}")
+		@Valid
+		List<CreateAddressDTO> address
 		) {
 
 	

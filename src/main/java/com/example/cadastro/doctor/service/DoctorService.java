@@ -1,5 +1,7 @@
 package com.example.cadastro.doctor.service;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,9 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.example.cadastro.address.Address;
+import com.example.cadastro.address.dto.request.CreateAddressDTO;
+import com.example.cadastro.address.repository.AddressRepository;
 import com.example.cadastro.doctor.dto.request.CreateDoctorDTO;
 import com.example.cadastro.doctor.dto.request.UpdateDoctorDTO;
 import com.example.cadastro.doctor.dto.response.DoctorResponseDTO;
@@ -30,6 +35,9 @@ public class DoctorService {
 	
 	@Autowired
 	private DoctorRepository repository;
+	
+	@Autowired
+	private AddressRepository addressRepository;
 	
 	@Autowired
 	private CadastroMapper mapper;
@@ -58,9 +66,17 @@ public class DoctorService {
 	
 	}
 	
-	public void create(CreateDoctorDTO data) {
+	public void create(@Valid CreateDoctorDTO data) {
 		log.info("Creating a doctor!");
-		repository.save(mapper.doctorDTOToDoctor(data));
+		
+		Doctor doctor = repository.save(mapper.doctorDTOToDoctor(data));
+		
+		for (Address address : doctor.getAddress()) {
+			address.setDoctor(doctor);
+			
+		}
+		
+		
 	}
 	
 	public void update(@Valid UpdateDoctorDTO data, Long id) {

@@ -2,8 +2,8 @@ package com.example.cadastro.doctor.dto.request;
 
 import java.util.List;
 
+import com.example.cadastro.address.dto.request.CreateAddressDTO;
 import com.example.cadastro.doctor.enums.Especialidade;
-import com.example.cadastro.endereco.CreateAddressDTO;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

@@ -1,5 +1,8 @@
 package com.example.cadastro.doctor.dto.response;
 
+import java.util.List;
+
+import com.example.cadastro.address.dto.response.ResponseAddressDTO;
 import com.example.cadastro.doctor.entities.Doctor;
 import com.example.cadastro.doctor.enums.Especialidade;
 
@@ -14,22 +17,12 @@ public record DoctorResponseDTO(
         
         String phone,
         
-        Especialidade especialidade
+        Especialidade especialidade,
+        
+        List<ResponseAddressDTO> address
 		) {
 	
-	/*
-	 public DoctorResponseDTO(Doctor doctor){
-	        this(
-	                doctor.getId(),
-	                doctor.getName(),
-	                doctor.getEmail(),
-	                doctor.getCrm(),
-	                doctor.getPhone(),
-	                doctor.getEspecialidade()
-	                );
-	    }
 
-*/
 	public Long getId() {
 		// TODO Auto-generated method stub
 		return this.id;
